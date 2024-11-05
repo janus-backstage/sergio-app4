@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "sergio-app4"
+  description: "A cool quarkus app"
+  annotations:
+    argocd/app-name: sergio-app4-dev
+    backstage.io/kubernetes-id: sergio-app4
+    backstage.io/kubernetes-namespace: sergio-app4-dev
+    janus-idp.io/tekton: sergio-app4
+    backstage.io/source-location: url:https://github.com/janus-backstage/sergio-app4
+    backstage.io/techdocs-ref: url:https://github.com/janus-backstage/sergio-app4
+    gitlab.com/project-slug: janus-backstage/sergio-app4
+    quay.io/repository-slug: "janus-backstage/sergio-app4"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.ocp4.quitala.eu/#https://github.com/janus-backstage/sergio-app4
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.ocp4.quitala.eu/#https://github.com/janus-backstage/sergio-app4?che-editor=che-incubator/che-idea/latest
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user1"
+  providesApis:
+    - "sergio-app4"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "sergio-app4"
+  description: "A cool quarkus app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user1"
+  definition:
+    $text: ./openapi.yaml
